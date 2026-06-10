@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Full-stack developer portfolio — Crafting elegant digital experiences with modern web technologies."
+    />
+    <meta name="author" content="Jonny Candes" />
+    <meta name="theme-color" content="#6c63ff" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Jonny Candes | Full-Stack Developer" />
+    <meta
+      property="og:description"
+      content="Full-stack developer crafting elegant digital experiences with modern web technologies."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/images/profile/avatar.png" />
+    <meta property="og:url" content="https://jonnycandes.dev" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jonny Candes | Full-Stack Developer" />
+    <meta
+      name="twitter:description"
+      content="Full-stack developer crafting elegant digital experiences with modern web technologies."
+    />
+
+    <link rel="icon" href="assets/images/icons/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://jonnycandes.dev" />
+    <script
+      src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"
+      defer
+    ></script>
+
+    <title>Jonny Candes | Full-Stack Developer</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/sections/hero.css" />
+    <link rel="stylesheet" href="assets/css/sections/about.css" />
+    <link rel="stylesheet" href="assets/css/sections/skills.css" />
+    <link rel="stylesheet" href="assets/css/sections/projects.css" />
+    <link rel="stylesheet" href="assets/css/sections/experience.css" />
+    <link rel="stylesheet" href="assets/css/sections/contact.css" />
+    <link rel="stylesheet" href="assets/css/sections/footer.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+  </head>
+  <body data-theme="dark">
+    <!-- Skip Link (Accessibility) -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Loader Overlay -->
+    <div class="loader" id="loader" aria-hidden="true">
+      <div class="loader__bar"></div>
+      <div class="loader__text">Loading…</div>
+    </div>
+
+    <!-- Custom Cursor (Desktop) -->
+    <div class="cursor" id="cursor" aria-hidden="true">
+      <div class="cursor__dot"></div>
+      <div class="cursor__ring"></div>
+    </div>
+
+    <!-- Header / Navigation -->
+    <header class="nav" id="nav" role="banner">
+      <div class="nav__container">
+        <a href="#hero" class="nav__logo" aria-label="Home">
+          <span class="nav__logo-bracket">{</span>
+          <span class="nav__logo-name">Portfolio</span>
+          <span class="nav__logo-bracket">}</span>
+        </a>
+
+        <nav class="nav__links" role="navigation" aria-label="Main navigation">
+          <ul class="nav__list" role="list">
+            <li>
+              <a href="#about" class="nav__link" data-section="about">About</a>
+            </li>
+            <li>
+              <a href="#skills" class="nav__link" data-section="skills"
+                >Skills</a
+              >
+            </li>
+            <li>
+              <a href="#projects" class="nav__link" data-section="projects"
+                >Projects</a
+              >
+            </li>
+            <li>
+              <a href="#experience" class="nav__link" data-section="experience"
+                >Experience</a
+              >
+            </li>
+            <li>
+              <a href="#contact" class="nav__link" data-section="contact"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <div class="nav__actions">
+          <button
+            class="nav__theme-toggle"
+            id="themeToggle"
+            aria-label="Switch to light mode"
+            aria-pressed="false"
+          >
+            <span class="theme-icon theme-icon--sun" aria-hidden="true">
+              <iconify-icon
+                icon="mdi:weather-sunny"
+                width="20"
+                height="20"
+              ></iconify-icon>
+            </span>
+            <span class="theme-icon theme-icon--moon" aria-hidden="true">
+              <iconify-icon
+                icon="mdi:weather-night"
+                width="20"
+                height="20"
+              ></iconify-icon>
+            </span>
+          </button>
+          <a href="#contact" class="btn btn--primary btn--sm nav__cta"
+            >Hire Me</a
+          >
+          <button
+            class="nav__hamburger"
+            id="hamburger"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+          >
+            <span class="hamburger__bar"></span>
+            <span class="hamburger__bar"></span>
+            <span class="hamburger__bar"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Drawer -->
+      <div
+        class="nav__mobile"
+        id="mobileMenu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
+      >
+        <ul class="nav__mobile-list" role="list">
+          <li><a href="#about" class="nav__mobile-link">About</a></li>
+          <li><a href="#skills" class="nav__mobile-link">Skills</a></li>
+          <li><a href="#projects" class="nav__mobile-link">Projects</a></li>
+          <li><a href="#experience" class="nav__mobile-link">Experience</a></li>
+          <li><a href="#contact" class="nav__mobile-link">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" tabindex="-1">
+      <!-- ============================================ -->
+      <!-- HERO SECTION                                -->
+      <!-- ============================================ -->
+      <section id="hero" class="section section--hero">
+        <canvas
+          class="hero__canvas"
+          id="heroCanvas"
+          aria-hidden="true"
+        ></canvas>
+        <div class="hero__grid" aria-hidden="true"></div>
+        <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
+        <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
+
+        <div class="hero__container">
+          <div class="hero__content">
+            <div class="hero__status">
+              <span class="status-dot status-dot--green"></span>
+              <span>Available for opportunities</span>
+            </div>
+
+            <p class="hero__greeting">// Hello, I'm</p>
+
+            <h1 class="hero__name">
+              <span class="hero__name-first">Jonny</span>
+              <span class="hero__name-last gradient-text">Candes</span>
+            </h1>
+
+            <p class="hero__role">
+              I build <span class="typewriter" id="typewriter"></span>
+            </p>
+
+            <p class="hero__description">
+              Full-stack developer crafting elegant digital experiences with
+              modern technologies. Passionate about clean code, performance, and
+              pixel-perfect interfaces.
+            </p>
+
+            <div class="hero__ctas">
+              <a href="#projects" class="btn btn--primary btn--lg">
+                <span>View My Work</span>
+                <iconify-icon
+                  icon="mdi:arrow-right"
+                  width="20"
+                  height="20"
+                  aria-hidden="true"
+                ></iconify-icon>
+              </a>
+              <a href="#contact" class="btn btn--outline btn--lg">Let's Talk</a>
+            </div>
+
+            <div class="hero__socials">
+              <a
+                href="https://github.com/jonnycandes"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+                aria-label="GitHub"
+              >
+                <iconify-icon
+                  icon="simple-icons:github"
+                  width="24"
+                  height="24"
+                ></iconify-icon>
+              </a>
+              <a
+                href="https://linkedin.com/in/jonnycandes"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+                aria-label="LinkedIn"
+              >
+                <iconify-icon
+                  icon="simple-icons:linkedin"
+                  width="24"
+                  height="24"
+                ></iconify-icon>
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+                aria-label="Twitter / X"
+              >
+                <iconify-icon
+                  icon="simple-icons:x"
+                  width="24"
+                  height="24"
+                ></iconify-icon>
+              </a>
+              <div class="social-line" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="hero__visual">
+            <div class="hero__avatar-wrapper">
+              <div
+                class="hero__avatar-ring hero__avatar-ring--1"
+                aria-hidden="true"
+              ></div>
+              <div
+                class="hero__avatar-ring hero__avatar-ring--2"
+                aria-hidden="true"
+              ></div>
+              <div class="hero__avatar">
+                <img
+                  src="assets/images/profile/avatar.png"
+                  alt="Jonny Candes"
+                  class="hero__avatar-img"
+                />
+              </div>
+              <div class="hero__badge hero__badge--1" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  class="hero__badge-icon"
+                  fill="#f7df1e"
+                >
+                  <path
+                    d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"
+                  />
+                </svg>
+                JavaScript
+              </div>
+              <div class="hero__badge hero__badge--2" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  class="hero__badge-icon"
+                  fill="#3776ab"
+                >
+                  <path
+                    d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"
+                  />
+                </svg>
+                Python
+              </div>
+              <div class="hero__badge hero__badge--3" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  class="hero__badge-icon"
+                  fill="#61dafb"
+                >
+                  <path
+                    d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.018 1.946.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-1.093-1.36-1.565z"
+                  />
+                </svg>
+                React
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__scroll-hint" aria-hidden="true">
+          <span>Scroll</span>
+          <div class="scroll-mouse">
+            <div class="scroll-wheel"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- ABOUT SECTION                                -->
+      <!-- ============================================ -->
+      <section id="about" class="section section--about">
+        <div class="section__container">
+          <div class="section__header" data-animate="fade-up">
+            <p class="section__label">// 01 about me</p>
+            <h2 class="section__title">Who I Am</h2>
+          </div>
+
+          <div class="about__grid">
+            <div class="about__content" data-animate="fade-right">
+              <p class="about__lead">
+                I'm a passionate full-stack developer with
+                <strong>5+ years</strong>
+                of experience building web applications that matter.
+              </p>
+              <p class="about__body">
+                My journey started with curiosity about how websites work, and
+                grew into a career building everything from pixel-perfect UIs to
+                robust backend systems. I love the intersection of design and
+                engineering.
+              </p>
+              <p class="about__body">
+                When I'm not coding, you'll find me contributing to open source,
+                writing technical articles, or leveling up in chess.
+              </p>
+
+              <div class="about__details">
+                <div class="about__detail-item">
+                  <span class="detail-label">Name</span>
+                  <span class="detail-value">Jonny Candes</span>
+                </div>
+                <div class="about__detail-item">
+                  <span class="detail-label">Location</span>
+                  <span class="detail-value"
+                    >Zamboanga Del Norte, Philippines</span
+                  >
+                </div>
+                <div class="about__detail-item">
+                  <span class="detail-label">Email</span>
+                  <a
+                    href="mailto:arjscandes73@gmail.com"
+                    class="detail-value detail-link"
+                    >arjscandes73@gmail.com</a
+                  >
+                </div>
+                <div class="about__detail-item">
+                  <span class="detail-label">Availability</span>
+                  <span class="detail-value detail-value--green"
+                    >Open to work ✓</span
+                  >
+                </div>
+              </div>
+
+              <div class="about__actions">
+                <a href="resume.pdf" download class="btn btn--primary">
+                  <span>Download CV</span>
+                  <iconify-icon
+                    icon="mdi:download"
+                    width="18"
+                    height="18"
+                    aria-hidden="true"
+                  ></iconify-icon>
+                </a>
+              </div>
+            </div>
+
+            <div class="about__visual" data-animate="fade-left">
+              <div class="about__stats" data-stagger>
+                <div class="stat-card" style="--delay: 0.1s">
+                  <span class="stat-card__number" data-count="5">0</span>
+                  <span class="stat-card__plus">+</span>
+                  <span class="stat-card__label">Years Experience</span>
+                </div>
+                <div class="stat-card" style="--delay: 0.2s">
+                  <span class="stat-card__number" data-count="30">0</span>
+                  <span class="stat-card__plus">+</span>
+                  <span class="stat-card__label">Projects Built</span>
+                </div>
+                <div class="stat-card" style="--delay: 0.3s">
+                  <span class="stat-card__number" data-count="15">0</span>
+                  <span class="stat-card__plus">+</span>
+                  <span class="stat-card__label">Happy Clients</span>
+                </div>
+                <div class="stat-card" style="--delay: 0.4s">
+                  <span class="stat-card__number" data-count="100">0</span>
+                  <span class="stat-card__plus">%</span>
+                  <span class="stat-card__label">Coffee Powered</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS SECTION -->
+      <section id="skills" class="section section--skills">
+        <div class="section__container">
+          <div class="section__header" data-animate="fade-up">
+            <p class="section__label">// 02 what I know</p>
+            <h2 class="section__title">Skills & Technologies</h2>
+          </div>
+
+          <div class="skills__tabs" role="tablist" data-animate="fade-up">
+            <button
+              id="skills-tab-frontend"
+              class="skills__tab skills__tab--active"
+              role="tab"
+              data-tab="frontend"
+              aria-selected="true"
+              aria-controls="skills-panel-frontend"
+            >
+              Frontend
+            </button>
+            <button
+              id="skills-tab-backend"
+              class="skills__tab"
+              role="tab"
+              data-tab="backend"
+              aria-selected="false"
+              aria-controls="skills-panel-backend"
+            >
+              Backend
+            </button>
+            <button
+              id="skills-tab-tools"
+              class="skills__tab"
+              role="tab"
+              data-tab="tools"
+              aria-selected="false"
+              aria-controls="skills-panel-tools"
+            >
+              Tools
+            </button>
+          </div>
+
+          <div class="skills__panels">
+            <div
+              class="skills__panel skills__panel--active"
+              data-panel="frontend"
+              id="skills-panel-frontend"
+              role="tabpanel"
+              aria-labelledby="skills-tab-frontend"
+              aria-live="polite"
+              tabindex="0"
+            >
+              <div class="skills__panel-inner">
+                <div class="skills__bars">
+                  <div class="skill-bar">
+                    <div class="skill-bar__header">
+                      <span class="skill-bar__name">HTML & CSS</span
+                      ><span class="skill-bar__percent">95%</span>
+                    </div>
+                    <div class="skill-bar__track">
+                      <div class="skill-bar__fill" data-width="95"></div>
+                    </div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar__header">
+                      <span class="skill-bar__name">JavaScript</span
+                      ><span class="skill-bar__percent">90%</span>
+                    </div>
+                    <div class="skill-bar__track">
+                      <div class="skill-bar__fill" data-width="90"></div>
+                    </div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar__header">
+                      <span class="skill-bar__name">React</span
+                      ><span class="skill-bar__percent">85%</span>
+                    </div>
+                    <div class="skill-bar__track">
+                      <div class="skill-bar__fill" data-width="85"></div>
+                    </div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar__header">
+                      <span class="skill-bar__name">Vue.js</span
+                      ><span class="skill-bar__percent">75%</span>
+                    </div>
+                    <div class="skill-bar__track">
+                      <div class="skill-bar__fill" data-width="75"></div>
+                    </div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar__header">
+                      <span class="skill-bar__name">TypeScript</span
+                      ><span class="skill-bar__percent">80%</span>
+                    </div>
+                    <div class="skill-bar__track">
+                      <div class="skill-bar__fill" data-width="80"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="skills__tech-grid">
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:html5"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">HTML5</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:css3"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">CSS3</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:javascript"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">JavaScript</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:typescript"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">TypeScript</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:react"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">React</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:vuedotjs"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">Vue.js</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:nextdotjs"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">Next.js</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:tailwindcss"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">Tailwind</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="skills__panel"
+              data-panel="backend"
+              id="skills-panel-backend"
+              role="tabpanel"
+              aria-labelledby="skills-tab-backend"
+              aria-live="polite"
+              aria-hidden="true"
+              tabindex="-1"
+            >
+              <div class="skills__panel-inner">
+                <div class="skills__bars">
+                  <div class="skill-bar">
+                    <div class="skill-bar__header">
+                      <span class="skill-bar__name">Node.js</span
+                      ><span class="skill-bar__percent">85%</span>
+                    </div>
+                    <div class="skill-bar__track">
+                      <div class="skill-bar__fill" data-width="85"></div>
+                    </div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar__header">
+                      <span class="skill-bar__name">Python</span
+                      ><span class="skill-bar__percent">80%</span>
+                    </div>
+                    <div class="skill-bar__track">
+                      <div class="skill-bar__fill" data-width="80"></div>
+                    </div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar__header">
+                      <span class="skill-bar__name">PostgreSQL</span
+                      ><span class="skill-bar__percent">75%</span>
+                    </div>
+                    <div class="skill-bar__track">
+                      <div class="skill-bar__fill" data-width="75"></div>
+                    </div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar__header">
+                      <span class="skill-bar__name">MongoDB</span
+                      ><span class="skill-bar__percent">70%</span>
+                    </div>
+                    <div class="skill-bar__track">
+                      <div class="skill-bar__fill" data-width="70"></div>
+                    </div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar__header">
+                      <span class="skill-bar__name">REST APIs</span
+                      ><span class="skill-bar__percent">90%</span>
+                    </div>
+                    <div class="skill-bar__track">
+                      <div class="skill-bar__fill" data-width="90"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="skills__tech-grid">
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:nodedotjs"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">Node.js</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:python"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">Python</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:express"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">Express</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:postgresql"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">PostgreSQL</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:mongodb"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">MongoDB</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:redis"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">Redis</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:graphql"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">GraphQL</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:oauth"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">OAuth2</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="skills__panel"
+              data-panel="tools"
+              id="skills-panel-tools"
+              role="tabpanel"
+              aria-labelledby="skills-tab-tools"
+              aria-live="polite"
+              aria-hidden="true"
+              tabindex="-1"
+            >
+              <div class="skills__panel-inner">
+                <div class="skills__bars">
+                  <div class="skill-bar">
+                    <div class="skill-bar__header">
+                      <span class="skill-bar__name">Git / GitHub</span
+                      ><span class="skill-bar__percent">95%</span>
+                    </div>
+                    <div class="skill-bar__track">
+                      <div class="skill-bar__fill" data-width="95"></div>
+                    </div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar__header">
+                      <span class="skill-bar__name">Docker</span
+                      ><span class="skill-bar__percent">70%</span>
+                    </div>
+                    <div class="skill-bar__track">
+                      <div class="skill-bar__fill" data-width="70"></div>
+                    </div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar__header">
+                      <span class="skill-bar__name">VS Code</span
+                      ><span class="skill-bar__percent">95%</span>
+                    </div>
+                    <div class="skill-bar__track">
+                      <div class="skill-bar__fill" data-width="95"></div>
+                    </div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar__header">
+                      <span class="skill-bar__name">Figma</span
+                      ><span class="skill-bar__percent">75%</span>
+                    </div>
+                    <div class="skill-bar__track">
+                      <div class="skill-bar__fill" data-width="75"></div>
+                    </div>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-bar__header">
+                      <span class="skill-bar__name">Linux</span
+                      ><span class="skill-bar__percent">80%</span>
+                    </div>
+                    <div class="skill-bar__track">
+                      <div class="skill-bar__fill" data-width="80"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="skills__tech-grid">
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:git"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">Git</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:docker"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">Docker</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:visualstudiocode"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">VS Code</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:figma"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">Figma</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:linux"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">Linux</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:amazonwebservices"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">AWS</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:vercel"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">Vercel</span>
+                  </div>
+                  <div class="tech-badge">
+                    <span class="tech-badge__icon">
+                      <iconify-icon
+                        icon="simple-icons:webpack"
+                        width="28"
+                        height="28"
+                      ></iconify-icon>
+                    </span>
+                    <span class="tech-badge__name">Webpack</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS SECTION -->
+      <section id="projects" class="section section--projects">
+        <div class="section__container">
+          <div class="section__header" data-animate="fade-up">
+            <p class="section__label">// 03 my work</p>
+            <h2 class="section__title">Featured Projects</h2>
+          </div>
+
+          <div class="projects__filters" data-animate="fade-up">
+            <button class="filter-btn filter-btn--active" data-filter="all">
+              All
+            </button>
+            <button class="filter-btn" data-filter="frontend">Frontend</button>
+            <button class="filter-btn" data-filter="fullstack">
+              Full-Stack
+            </button>
+            <button class="filter-btn" data-filter="backend">Backend</button>
+          </div>
+
+          <div class="projects__grid" id="projectsGrid">
+            <article
+              class="project-card"
+              data-category="fullstack"
+              data-animate="fade-up"
+            >
+              <div class="project-card__image">
+                <img src="assets/images/projects/project-1.svg" alt="E-Commerce Platform" class="project-card__img" />
+                <div class="project-card__overlay">
+                  <button
+                    class="project-card__view-btn"
+                    data-project="0"
+                    aria-label="View project details"
+                  >
+                    Quick View
+                  </button>
+                </div>
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__meta">
+                  <span class="project-card__category">Full-Stack</span>
+                  <span class="project-card__year">2024</span>
+                </div>
+                <h3 class="project-card__title">E-Commerce Platform</h3>
+                <p class="project-card__desc">
+                  A full-featured online store with cart, payments (Stripe), and
+                  admin dashboard.
+                </p>
+                <div class="project-card__tags">
+                  <span class="tag">React</span>
+                  <span class="tag">Node.js</span>
+                  <span class="tag">MongoDB</span>
+                  <span class="tag">Stripe</span>
+                </div>
+                <div class="project-card__links">
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn--sm btn--outline"
+                    >Live Demo</a
+                  >
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn--sm btn--ghost"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="project-card"
+              data-category="frontend"
+              data-animate="fade-up"
+            >
+              <div class="project-card__image">
+                <img src="assets/images/projects/project-2.svg" alt="Analytics Dashboard" class="project-card__img" />
+                <div class="project-card__overlay">
+                  <button
+                    class="project-card__view-btn"
+                    data-project="1"
+                    aria-label="View project details"
+                  >
+                    Quick View
+                  </button>
+                </div>
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__meta">
+                  <span class="project-card__category">Frontend</span>
+                  <span class="project-card__year">2024</span>
+                </div>
+                <h3 class="project-card__title">Analytics Dashboard</h3>
+                <p class="project-card__desc">
+                  Real-time analytics dashboard with interactive charts and data
+                  visualization.
+                </p>
+                <div class="project-card__tags">
+                  <span class="tag">React</span>
+                  <span class="tag">TypeScript</span>
+                  <span class="tag">D3.js</span>
+                </div>
+                <div class="project-card__links">
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn--sm btn--outline"
+                    >Live Demo</a
+                  >
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn--sm btn--ghost"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="project-card"
+              data-category="fullstack"
+              data-animate="fade-up"
+            >
+              <div class="project-card__image">
+                <img src="assets/images/projects/project-3.svg" alt="Task Management App" class="project-card__img" />
+                <div class="project-card__overlay">
+                  <button
+                    class="project-card__view-btn"
+                    data-project="2"
+                    aria-label="View project details"
+                  >
+                    Quick View
+                  </button>
+                </div>
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__meta">
+                  <span class="project-card__category">Full-Stack</span>
+                  <span class="project-card__year">2023</span>
+                </div>
+                <h3 class="project-card__title">Task Management App</h3>
+                <p class="project-card__desc">
+                  Collaborative project management tool with real-time updates
+                  and team workflows.
+                </p>
+                <div class="project-card__tags">
+                  <span class="tag">Vue.js</span>
+                  <span class="tag">Express</span>
+                  <span class="tag">PostgreSQL</span>
+                </div>
+                <div class="project-card__links">
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn--sm btn--outline"
+                    >Live Demo</a
+                  >
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn--sm btn--ghost"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="project-card"
+              data-category="backend"
+              data-animate="fade-up"
+            >
+              <div class="project-card__image">
+                <img src="assets/images/projects/project-4.svg" alt="RESTful API Service" class="project-card__img" />
+                <div class="project-card__overlay">
+                  <button
+                    class="project-card__view-btn"
+                    data-project="3"
+                    aria-label="View project details"
+                  >
+                    Quick View
+                  </button>
+                </div>
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__meta">
+                  <span class="project-card__category">Backend</span>
+                  <span class="project-card__year">2023</span>
+                </div>
+                <h3 class="project-card__title">RESTful API Service</h3>
+                <p class="project-card__desc">
+                  A scalable REST API with rate limiting, caching, and OAuth2
+                  authentication.
+                </p>
+                <div class="project-card__tags">
+                  <span class="tag">Python</span>
+                  <span class="tag">FastAPI</span>
+                  <span class="tag">Redis</span>
+                </div>
+                <div class="project-card__links">
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn--sm btn--outline"
+                    >Live Demo</a
+                  >
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn--sm btn--ghost"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="project-card"
+              data-category="frontend"
+              data-animate="fade-up"
+            >
+              <div class="project-card__image">
+                <img src="assets/images/projects/project-5.svg" alt="Portfolio Builder" class="project-card__img" />
+                <div class="project-card__overlay">
+                  <button
+                    class="project-card__view-btn"
+                    data-project="4"
+                    aria-label="View project details"
+                  >
+                    Quick View
+                  </button>
+                </div>
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__meta">
+                  <span class="project-card__category">Frontend</span>
+                  <span class="project-card__year">2023</span>
+                </div>
+                <h3 class="project-card__title">Portfolio Builder</h3>
+                <p class="project-card__desc">
+                  A no-code portfolio builder with drag-and-drop UI and custom
+                  domain support.
+                </p>
+                <div class="project-card__tags">
+                  <span class="tag">React</span>
+                  <span class="tag">Next.js</span>
+                  <span class="tag">GraphQL</span>
+                </div>
+                <div class="project-card__links">
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn--sm btn--outline"
+                    >Live Demo</a
+                  >
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn--sm btn--ghost"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="project-card"
+              data-category="backend"
+              data-animate="fade-up"
+            >
+              <div class="project-card__image">
+                <img src="assets/images/projects/project-6.svg" alt="AI Code Review Bot" class="project-card__img" />
+                <div class="project-card__overlay">
+                  <button
+                    class="project-card__view-btn"
+                    data-project="5"
+                    aria-label="View project details"
+                  >
+                    Quick View
+                  </button>
+                </div>
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__meta">
+                  <span class="project-card__category">Backend</span>
+                  <span class="project-card__year">2024</span>
+                </div>
+                <h3 class="project-card__title">AI Code Review Bot</h3>
+                <p class="project-card__desc">
+                  An AI-powered code review bot that integrates with GitHub pull
+                  requests.
+                </p>
+                <div class="project-card__tags">
+                  <span class="tag">Node.js</span>
+                  <span class="tag">OpenAI</span>
+                  <span class="tag">AWS</span>
+                </div>
+                <div class="project-card__links">
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn--sm btn--outline"
+                    >Live Demo</a
+                  >
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn--sm btn--ghost"
+                    >GitHub</a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Modal -->
+      <div
+        class="modal"
+        id="projectModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <div class="modal__backdrop" id="modalBackdrop"></div>
+        <div class="modal__panel">
+          <button class="modal__close" id="modalClose" aria-label="Close modal">
+            &times;
+          </button>
+          <div class="modal__content" id="modalContent">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPERIENCE SECTION -->
+      <section id="experience" class="section section--experience">
+        <div class="section__container">
+          <div class="section__header" data-animate="fade-up">
+            <p class="section__label">// 04 my journey</p>
+            <h2 class="section__title">Experience & Education</h2>
+          </div>
+
+          <div class="experience__tabs" role="tablist" data-animate="fade-up">
+            <button
+              class="exp-tab exp-tab--active"
+              data-exp="work"
+              role="tab"
+              id="exp-tab-work"
+              aria-selected="true"
+              aria-controls="workTimeline"
+            >
+              Work
+            </button>
+            <button
+              class="exp-tab"
+              data-exp="education"
+              role="tab"
+              id="exp-tab-education"
+              aria-selected="false"
+              aria-controls="educationTimeline"
+            >
+              Education
+            </button>
+          </div>
+
+          <div class="timeline" id="workTimeline" role="tabpanel" aria-labelledby="exp-tab-work" tabindex="0">
+            <div
+              class="timeline__item timeline__item--current"
+              data-animate="fade-right"
+            >
+              <div class="timeline__dot"></div>
+              <div class="timeline__card">
+                <div class="timeline__header">
+                  <div class="timeline__header-main">
+                    <h3 class="timeline__role">Senior Frontend Developer</h3>
+                    <p class="timeline__company">TechCorp Solutions</p>
+                  </div>
+                  <div class="timeline__meta">
+                    <span class="timeline__period">2022 - Present</span>
+                    <span class="timeline__type timeline__type--current"
+                      >Current</span
+                    >
+                  </div>
+                </div>
+                <p class="timeline__description">
+                  Led the frontend team of 4 developers building a SaaS
+                  dashboard product. Reduced load time by 40% through
+                  optimization and code splitting.
+                </p>
+                <ul class="timeline__achievements">
+                  <li>Architected component library used across 3 products</li>
+                  <li>Mentored 2 junior developers to mid-level</li>
+                  <li>
+                    Implemented CI/CD pipeline cutting deployment time by 60%
+                  </li>
+                </ul>
+                <div class="timeline__tags">
+                  <span class="tag">React</span>
+                  <span class="tag">TypeScript</span>
+                  <span class="tag">GraphQL</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline__item" data-animate="fade-right">
+              <div class="timeline__dot"></div>
+              <div class="timeline__card">
+                <div class="timeline__header">
+                  <div class="timeline__header-main">
+                    <h3 class="timeline__role">Full-Stack Developer</h3>
+                    <p class="timeline__company">Digital Agency Inc.</p>
+                  </div>
+                  <div class="timeline__meta">
+                    <span class="timeline__period">2020 - 2022</span>
+                    <span class="timeline__type timeline__type--past"
+                      >Past</span
+                    >
+                  </div>
+                </div>
+                <p class="timeline__description">
+                  Built and maintained 20+ client websites ranging from
+                  e-commerce platforms to corporate portals. Worked across the
+                  full stack.
+                </p>
+                <ul class="timeline__achievements">
+                  <li>Delivered 20+ projects on time and within budget</li>
+                  <li>Improved team workflow with shared design system</li>
+                  <li>Reduced bug reports by 50% through automated testing</li>
+                </ul>
+                <div class="timeline__tags">
+                  <span class="tag">Vue.js</span>
+                  <span class="tag">Node.js</span>
+                  <span class="tag">PostgreSQL</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline__item" data-animate="fade-right">
+              <div class="timeline__dot"></div>
+              <div class="timeline__card">
+                <div class="timeline__header">
+                  <div class="timeline__header-main">
+                    <h3 class="timeline__role">Junior Web Developer</h3>
+                    <p class="timeline__company">StartupCo</p>
+                  </div>
+                  <div class="timeline__meta">
+                    <span class="timeline__period">2018 - 2020</span>
+                    <span class="timeline__type timeline__type--past"
+                      >Past</span
+                    >
+                  </div>
+                </div>
+                <p class="timeline__description">
+                  Started my professional career building landing pages and
+                  small business websites. Learned modern frameworks and best
+                  practices.
+                </p>
+                <ul class="timeline__achievements">
+                  <li>Built 30+ responsive landing pages</li>
+                  <li>Learned React, Vue, and modern build tools</li>
+                  <li>Contributed to internal tooling and documentation</li>
+                </ul>
+                <div class="timeline__tags">
+                  <span class="tag">HTML/CSS</span>
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">PHP</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline timeline--hidden" id="educationTimeline" role="tabpanel" aria-labelledby="exp-tab-education" aria-hidden="true" tabindex="-1">
+            <div class="timeline__item" data-animate="fade-right">
+              <div class="timeline__dot"></div>
+              <div class="timeline__card">
+                <div class="timeline__header">
+                  <div class="timeline__header-main">
+                    <h3 class="timeline__role">B.S. Computer Science</h3>
+                    <p class="timeline__company">University of Technology</p>
+                  </div>
+                  <div class="timeline__meta">
+                    <span class="timeline__period">2014 - 2018</span>
+                    <span class="timeline__type timeline__type--past"
+                      >Graduated</span
+                    >
+                  </div>
+                </div>
+                <p class="timeline__description">
+                  Graduated with honors. Focused on software engineering,
+                  algorithms, and web technologies. Active in hackathons and
+                  student organizations.
+                </p>
+                <ul class="timeline__achievements">
+                  <li>GPA: 3.8 / 4.0 - Magna Cum Laude</li>
+                  <li>President of Web Dev Student Society</li>
+                  <li>1st place at National Hackathon 2017</li>
+                </ul>
+                <div class="timeline__tags">
+                  <span class="tag">CS</span>
+                  <span class="tag">Algorithms</span>
+                  <span class="tag">Web Tech</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline__item" data-animate="fade-right">
+              <div class="timeline__dot"></div>
+              <div class="timeline__card">
+                <div class="timeline__header">
+                  <div class="timeline__header-main">
+                    <h3 class="timeline__role">AWS Certified Developer</h3>
+                    <p class="timeline__company">Amazon Web Services</p>
+                  </div>
+                  <div class="timeline__meta">
+                    <span class="timeline__period">2023</span>
+                    <span class="timeline__type timeline__type--past"
+                      >Certified</span
+                    >
+                  </div>
+                </div>
+                <p class="timeline__description">
+                  Earned the AWS Certified Developer - Associate credential,
+                  validating expertise in cloud-native application development.
+                </p>
+                <ul class="timeline__achievements">
+                  <li>Serverless architecture and Lambda functions</li>
+                  <li>DynamoDB, S3, and CloudFormation</li>
+                  <li>CI/CD pipelines with CodePipeline</li>
+                </ul>
+                <div class="timeline__tags">
+                  <span class="tag">AWS</span>
+                  <span class="tag">Cloud</span>
+                  <span class="tag">Serverless</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section id="contact" class="section section--contact">
+        <div class="section__container">
+          <div class="section__header" data-animate="fade-up">
+            <p class="section__label">// 05 get in touch</p>
+            <h2 class="section__title">Let's Work Together</h2>
+            <p class="section__subtitle">
+              Have a project in mind? I'd love to hear about it. Let's create
+              something amazing together.
+            </p>
+          </div>
+
+          <div class="contact__grid">
+            <div class="contact__info" data-animate="fade-right">
+              <a href="mailto:arjscandes73@gmail.com" class="contact-info-card">
+                <div class="contact-info-card__icon">
+                  <iconify-icon
+                    icon="mdi:email-outline"
+                    width="24"
+                    height="24"
+                    aria-hidden="true"
+                  ></iconify-icon>
+                </div>
+                <div class="contact-info-card__body">
+                  <p class="contact-info-card__label">Email</p>
+                  <span class="contact-info-card__value"
+                    >arjscandes73@gmail.com</span
+                  >
+                </div>
+              </a>
+              <div class="contact-info-card">
+                <div class="contact-info-card__icon">
+                  <iconify-icon
+                    icon="mdi:map-marker-outline"
+                    width="24"
+                    height="24"
+                    aria-hidden="true"
+                  ></iconify-icon>
+                </div>
+                <div class="contact-info-card__body">
+                  <p class="contact-info-card__label">Location</p>
+                  <p class="contact-info-card__value">
+                    Purok 3B, Barangay Daanglungsod, Katipunan, Zamboanga Del
+                    Norte, Philippines
+                  </p>
+                </div>
+              </div>
+              <a
+                href="https://linkedin.com/in/jonnycandes"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-info-card"
+              >
+                <div class="contact-info-card__icon">
+                  <iconify-icon
+                    icon="mdi:linkedin"
+                    width="24"
+                    height="24"
+                    aria-hidden="true"
+                  ></iconify-icon>
+                </div>
+                <div class="contact-info-card__body">
+                  <p class="contact-info-card__label">LinkedIn</p>
+                  <span class="contact-info-card__value"
+                    >linkedin.com/in/jonnycandes</span
+                  >
+                </div>
+              </a>
+              <a
+                href="https://github.com/jonnycandes"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-info-card"
+              >
+                <div class="contact-info-card__icon">
+                  <iconify-icon
+                    icon="mdi:github"
+                    width="24"
+                    height="24"
+                    aria-hidden="true"
+                  ></iconify-icon>
+                </div>
+                <div class="contact-info-card__body">
+                  <p class="contact-info-card__label">GitHub</p>
+                  <span class="contact-info-card__value"
+                    >github.com/jonnycandes</span
+                  >
+                </div>
+              </a>
+              <div class="contact__response-badge">
+                <span class="status-dot status-dot--green"></span>
+                Usually responds within 24 hours
+              </div>
+            </div>
+
+            <div class="contact__form-wrapper" data-animate="fade-left">
+              <div class="contact__form-card">
+                <form id="contactForm" class="contact-form">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label class="form-label" for="contactName">Name *</label>
+                      <input
+                        type="text"
+                        id="contactName"
+                        name="name"
+                        class="form-input"
+                        placeholder="John Doe"
+                        autocomplete="name"
+                        required
+                      />
+                      <span class="form-error" id="nameError"></span>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="contactEmail"
+                        >Email *</label
+                      >
+                      <input
+                        type="email"
+                        id="contactEmail"
+                        name="email"
+                        class="form-input"
+                        placeholder="john@example.com"
+                        autocomplete="email"
+                        required
+                      />
+                      <span class="form-error" id="emailError"></span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="contactSubject"
+                      >Subject *</label
+                    >
+                    <input
+                      type="text"
+                      id="contactSubject"
+                      name="subject"
+                      class="form-input"
+                      placeholder="Project Inquiry"
+                      required
+                    />
+                    <span class="form-error" id="subjectError"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="contactMessage"
+                      >Message *</label
+                    >
+                    <textarea
+                      id="contactMessage"
+                      name="message"
+                      class="form-textarea"
+                      rows="5"
+                      placeholder="Tell me about your project..."
+                      required
+                    ></textarea>
+                    <span class="form-error" id="messageError"></span>
+                    <span class="form-char-count"
+                      ><span id="charCount">0</span>/500</span
+                    >
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="btn btn--primary btn--full"
+                    id="contactSubmit"
+                  >
+                    <span class="btn-text">Send Message</span>
+                    <span class="btn-loading" aria-hidden="true"
+                      >Sending...</span
+                    >
+                    <iconify-icon
+                      icon="mdi:send"
+                      width="18"
+                      height="18"
+                      aria-hidden="true"
+                    ></iconify-icon>
+                  </button>
+                </form>
+
+                <div
+                  class="contact__success"
+                  id="contactSuccess"
+                  style="display: none"
+                >
+                  <div class="contact__success-icon">
+                    <iconify-icon
+                      icon="mdi:check-circle"
+                      aria-hidden="true"
+                    ></iconify-icon>
+                  </div>
+                  <h3>Message Sent!</h3>
+                  <p>
+                    Thanks for reaching out. I'll get back to you within 24
+                    hours.
+                  </p>
+                  <button class="btn btn--outline" id="contactReset">
+                    Send Another
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__top">
+          <div class="footer__brand">
+            <a href="#hero" class="nav__logo">
+              <span class="nav__logo-bracket">{</span>
+              <span class="nav__logo-name">Portfolio</span>
+              <span class="nav__logo-bracket">}</span>
+            </a>
+            <p class="footer__tagline">
+              Building the web, one commit at a time.
+            </p>
+          </div>
+
+          <div class="footer__links">
+            <div class="footer__col">
+              <h4 class="footer__col-title">Navigation</h4>
+              <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+            <div class="footer__col">
+              <h4 class="footer__col-title">Connect</h4>
+              <ul>
+                <li>
+                  <a
+                    href="https://github.com/jonnycandes"
+                    target="_blank"
+                    rel="noopener"
+                    >GitHub</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://linkedin.com/in/jonnycandes"
+                    target="_blank"
+                    rel="noopener"
+                    >LinkedIn</a
+                  >
+                </li>
+                <li>
+                  <a href="https://twitter.com" target="_blank" rel="noopener"
+                    >Twitter</a
+                  >
+                </li>
+                <li><a href="mailto:arjscandes73@gmail.com">Email</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p class="footer__copy">
+            &copy; <span id="currentYear"></span> <strong>Jonny Candes</strong>.
+            Built with passion using pure HTML, CSS & JavaScript.
+          </p>
+          <p class="footer__credits">
+            Designed & developed by <strong>Jonny Candes</strong>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="btn-top" id="btnTop" aria-label="Back to top">
+      <iconify-icon icon="mdi:chevron-up" aria-hidden="true"></iconify-icon>
+    </button>
+
+    <!-- Scripts (deferred) -->
+    <script src="assets/js/utils.js" defer></script>
+    <script src="assets/js/theme.js" defer></script>
+    <script src="assets/js/navigation.js" defer></script>
+    <script src="assets/js/particles.js" defer></script>
+    <script src="assets/js/typewriter.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+    <script src="assets/js/skills.js" defer></script>
+    <script src="assets/js/projects.js" defer></script>
+    <script src="assets/js/contact.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>
