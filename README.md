@@ -1,5 +1,7 @@
 # Jonny Candes | Full-Stack Developer Portfolio
 
+![Portfolio Preview](image.png)
+
 A modern, accessible portfolio website showcasing full-stack development skills and projects. Built with pure HTML, CSS, and JavaScript — no frameworks or bundlers.
 
 ## Features
