@@ -91,3 +91,7 @@ MIT License - see [LICENSE](LICENSE) for details.
 ## Contributing
 
 We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to get started.
+
+## Security
+
+For security concerns, please see [SECURITY.md](SECURITY.md) for our vulnerability reporting process.
