@@ -87,3 +87,7 @@ npx serve .
 ## License
 
 MIT License - see [LICENSE](LICENSE) for details.
+
+## Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to get started.
