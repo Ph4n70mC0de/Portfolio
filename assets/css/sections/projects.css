@@ -1,5 +1,3 @@
-/* === sections/projects.css === */
-
 .section--projects {
   background: var(--color-bg-primary);
   position: relative;
@@ -45,7 +43,6 @@
   gap: var(--sp-6);
 }
 
-/* ─── PROJECT CARD ─── */
 .project-card {
   background: var(--color-bg-secondary);
   border: 1px solid var(--color-border-subtle);
@@ -184,7 +181,6 @@
   flex-wrap: wrap;
 }
 
-/* ─── MODAL ─── */
 .modal {
   position: fixed;
   inset: 0;

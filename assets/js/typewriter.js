@@ -2,12 +2,6 @@
 // Typewriter effect engine
 
 class TypeWriter {
-  /**
-   * Create a typewriter instance
-   * @param {HTMLElement} element - Target element
-   * @param {string[]} words - Array of strings to cycle through
-   * @param {Object} options - Configuration options
-   */
   constructor(element, words = [], options = {}) {
     this.element = element;
     this.words = words;
@@ -29,9 +23,6 @@ class TypeWriter {
     this.timer = null;
   }
 
-  /**
-   * Type a character
-   */
   type() {
     const current = this.words[this.wordIndex] || '';
     if (this.isDeleting) {
@@ -63,9 +54,6 @@ class TypeWriter {
     this.timer = setTimeout(() => this.type(), delay);
   }
 
-  /**
-   * Start the typewriter loop
-   */
   start() {
     if (!this.element || !this.words.length) return;
     if (window.prefersReducedMotion && window.prefersReducedMotion()) {
@@ -76,9 +64,6 @@ class TypeWriter {
     this.type();
   }
 
-  /**
-   * Stop the typewriter
-   */
   stop() {
     if (this.timer) {
       clearTimeout(this.timer);

@@ -1,10 +1,7 @@
-/* === base.css === */
-/* Google Fonts + global typography */
-
-/* ─── FONTS IMPORT ─── */
+/* Fonts import */
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* ─── BODY ─── */
+/* Body */
 body {
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
@@ -17,7 +14,7 @@ body {
               color var(--duration-slow) var(--ease-out);
 }
 
-/* ─── HEADINGS ─── */
+/* Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: var(--fw-black);
@@ -33,20 +30,20 @@ h4 { font-size: var(--text-xl); }
 h5 { font-size: var(--text-lg); }
 h6 { font-size: var(--text-md); }
 
-/* ─── PARAGRAPHS ─── */
+/* Paragraphs */
 p {
   line-height: var(--lh-loose);
   color: var(--color-text-secondary);
 }
 
-/* ─── LINKS ─── */
+/* Links */
 a {
   color: inherit;
   text-decoration: none;
   transition: color var(--duration-base) var(--ease-out);
 }
 
-/* ─── CODE / MONOSPACE ─── */
+/* Code / monospace */
 code, pre, kbd, samp {
   font-family: var(--font-mono);
   font-size: 0.95em;
@@ -73,7 +70,7 @@ pre code {
   color: inherit;
 }
 
-/* ─── TEXT SELECTION ─── */
+/* Text selection */
 ::selection {
   background: rgba(108, 99, 255, 0.3);
   color: var(--color-text-primary);
@@ -85,7 +82,7 @@ pre code {
   color: var(--color-text-primary);
 }
 
-/* ─── SCROLLBAR (WebKit) ─── */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -112,14 +109,14 @@ pre code {
   scrollbar-color: var(--color-accent-primary) var(--color-bg-primary);
 }
 
-/* ─── FOCUS STYLES ─── */
+/* Focus styles */
 :focus-visible {
   outline: 2px solid var(--color-accent-primary);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* ─── THEME TRANSITION ─── */
+/* Theme transition */
 .theme-transitioning,
 .theme-transitioning *,
 .theme-transitioning *::before,
@@ -130,7 +127,7 @@ pre code {
               box-shadow 500ms var(--ease-out) !important;
 }
 
-/* ─── UTILITY CLASSES ─── */
+/* Utilities */
 .visually-hidden {
   position: absolute;
   width: 1px;

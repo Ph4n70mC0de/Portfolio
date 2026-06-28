@@ -1,5 +1,3 @@
-/* === sections/contact.css === */
-
 .section--contact {
   background: var(--color-bg-primary);
   position: relative;
@@ -22,7 +20,6 @@
   align-items: start;
 }
 
-/* ─── CONTACT INFO ─── */
 .contact__info {
   display: flex;
   flex-direction: column;
@@ -110,7 +107,6 @@ a.contact-info-card .contact-info-card__value:hover {
   align-self: flex-start;
 }
 
-/* ─── CONTACT FORM ─── */
 .contact__form-card {
   background: var(--color-bg-secondary);
   border: 1px solid var(--color-border-subtle);
@@ -246,7 +242,6 @@ a.contact-info-card .contact-info-card__value:hover {
   display: none;
 }
 
-/* ─── SUCCESS STATE ─── */
 .contact__success {
   text-align: center;
   padding: var(--sp-8) 0;

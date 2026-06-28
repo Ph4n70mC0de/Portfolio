@@ -1,5 +1,3 @@
-/* === sections/about.css === */
-
 .section--about {
   background: var(--color-bg-primary);
   position: relative;
@@ -99,7 +97,6 @@
   margin-top: var(--sp-2);
 }
 
-/* ─── STATS ─── */
 .about__visual {
   position: sticky;
   top: calc(var(--nav-height) + var(--sp-6));

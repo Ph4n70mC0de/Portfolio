@@ -1,7 +1,5 @@
-/* === animations.css === */
-/* Keyframes and animation utility classes */
 
-/* ─── FADE / SLIDE KEYFRAMES ─── */
+/* Fade / slide keyframes */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -91,7 +89,7 @@
   100% { background-position: 200% 0; }
 }
 
-/* ─── SCROLL-TRIGGERED ANIMATION (driven by JS) ─── */
+/* Scroll-triggered animation (driven by JS) */
 [data-animate] {
   opacity: 0;
   transition: opacity var(--duration-slower) var(--ease-out),
@@ -111,7 +109,7 @@
   transform: none;
 }
 
-/* ─── STAGGER ANIMATION ─── */
+/* Stagger animation */
 [data-stagger] > * {
   opacity: 0;
   transform: translateY(20px);
@@ -136,7 +134,7 @@
 [data-stagger].animated > *:nth-child(11) { transition-delay: 1.0s; }
 [data-stagger].animated > *:nth-child(12) { transition-delay: 1.1s; }
 
-/* ─── ANIMATION UTILITIES ─── */
+/* Animation utilities */
 .anim-float {
   animation: float 4s ease-in-out infinite;
 }
@@ -158,7 +156,7 @@
   animation: shimmer 1.5s linear infinite;
 }
 
-/* ─── SHAKE (form error) ─── */
+/* Shake (form error) */
 .shake {
   animation: shake 0.4s var(--ease-out);
 }

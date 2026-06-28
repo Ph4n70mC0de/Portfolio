@@ -8,11 +8,9 @@
    * Initialize the application
    */
   function init() {
-    // 1. Set current year in footer
     const yearEl = document.getElementById('currentYear');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // 2. Initialize typewriter (after small delay so it's visible after loader)
     const typewriterEl = document.getElementById('typewriter');
     if (typewriterEl && window.TypeWriter) {
       const tw = new window.TypeWriter(typewriterEl, [
@@ -27,20 +25,15 @@
         pauseAfterType: 2200,
         pauseAfterDelete: 500,
       });
-      // Start after a delay to feel natural
       setTimeout(() => tw.start(), 600);
     }
 
-    // 3. Experience tabs (work / education)
     initExperienceTabs();
-
-    // 4. Log easter egg to console
     logIntro();
   }
 
   /**
-   * Experience section: switch between work and education timelines
-   * Follows WAI-ARIA Tabs pattern with full keyboard navigation
+   * Switch between work and education timelines
    */
   function initExperienceTabs() {
     const tabs = document.querySelectorAll('.exp-tab');
@@ -128,27 +121,7 @@
    * Print intro easter egg
    */
   function logIntro() {
-    if (typeof console === 'undefined') return;
-    try {
-      console.log(
-        '%c👋 Welcome to my portfolio!',
-        'font-size:22px; color:#6c63ff; font-weight:bold; font-family:sans-serif;'
-      );
-      console.log(
-        '%c⚡ Stack: Pure HTML + CSS + Vanilla JavaScript',
-        'color:#00d4ff; font-size:14px; font-family:monospace;'
-      );
-      console.log(
-        '%c🎯 Open to work: you@email.com',
-        'color:#00ff88; font-size:14px; font-family:monospace;'
-      );
-      console.log(
-        '%c// Inspect the code. No frameworks. No bundlers. Just clean web fundamentals.',
-        'color:#9898b0; font-size:12px; font-style:italic;'
-      );
-    } catch (e) {
-      // ignore
-    }
+    console.log('Portfolio site - open to work');
   }
 
   // Initialize on DOMContentLoaded
