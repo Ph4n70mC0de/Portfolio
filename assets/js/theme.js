@@ -6,10 +6,6 @@
 
   const THEME_KEY = 'portfolio-theme';
 
-  /**
-   * Get the user's preferred theme from localStorage or system preferences
-   * @returns {string} 'dark' or 'light'
-   */
   function getPreferredTheme() {
     const stored = localStorage.getItem(THEME_KEY);
     if (stored === 'dark' || stored === 'light') return stored;
@@ -19,10 +15,6 @@
     return 'dark';
   }
 
-  /**
-   * Apply the theme to the document body
-   * @param {string} theme - 'dark' or 'light'
-   */
   function applyTheme(theme) {
     document.body.setAttribute('data-theme', theme);
     const toggle = document.getElementById('themeToggle');
@@ -33,14 +25,10 @@
     }
   }
 
-  /**
-   * Toggle between dark and light themes
-   */
   function toggleTheme() {
     const current = document.body.getAttribute('data-theme') || 'dark';
     const next = current === 'dark' ? 'light' : 'dark';
 
-    // Trigger smooth transition
     document.body.classList.add('theme-transitioning');
     applyTheme(next);
 
@@ -56,9 +44,6 @@
     }, 500);
   }
 
-  /**
-   * Initialize theme system
-   */
   function init() {
     const theme = getPreferredTheme();
     applyTheme(theme);

@@ -15,9 +15,6 @@
   let isMenuOpen = false;
   let backdrop = null;
 
-  /**
-   * Create backdrop element for mobile menu
-   */
   function createBackdrop() {
     backdrop = document.createElement('div');
     backdrop.className = 'nav__backdrop';
@@ -25,9 +22,6 @@
     backdrop.addEventListener('click', closeMobileMenu);
   }
 
-  /**
-   * Open mobile menu
-   */
   function openMobileMenu() {
     if (!mobileMenu || !hamburger) return;
     isMenuOpen = true;
@@ -37,13 +31,9 @@
     if (backdrop) backdrop.classList.add('nav__backdrop--active');
     document.body.style.overflow = 'hidden';
 
-    // Trap focus inside menu
     if (window.trapFocus) window.trapFocus(mobileMenu);
   }
 
-  /**
-   * Close mobile menu
-   */
   function closeMobileMenu() {
     if (!mobileMenu || !hamburger) return;
     isMenuOpen = false;
@@ -56,29 +46,21 @@
     if (window.releaseFocus) window.releaseFocus(mobileMenu);
   }
 
-  /**
-   * Toggle mobile menu
-   */
   function toggleMobileMenu() {
     if (isMenuOpen) closeMobileMenu();
     else openMobileMenu();
   }
 
-  /**
-   * Handle scroll: add scrolled class, hide/show nav
-   */
   function handleScroll() {
     const currentY = window.scrollY;
     const scrollDown = currentY > lastScrollY;
 
-    // Add scrolled class
     if (currentY > 50) {
       nav.classList.add('nav--scrolled');
     } else {
       nav.classList.remove('nav--scrolled');
     }
 
-    // Hide on scroll down past threshold; show on scroll up
     if (!isMenuOpen) {
       if (scrollDown && currentY > 300) {
         nav.classList.add('nav--hidden');
@@ -90,9 +72,6 @@
     lastScrollY = currentY;
   }
 
-  /**
-   * Set active nav link based on currently visible section
-   */
   function setActiveLink() {
     const scrollY = window.scrollY;
     const navHeight = parseInt(getCSSVar('--nav-height'), 10) || 72;
@@ -107,7 +86,6 @@
     });
 
     if (!currentId) {
-      // Fallback to first section
       currentId = sections[0] ? sections[0].id : '';
     }
 
@@ -121,9 +99,6 @@
     });
   }
 
-  /**
-   * Smooth-scroll to a section with offset for nav height
-   */
   function smoothScrollTo(targetId) {
     const target = document.getElementById(targetId);
     if (!target) return;
@@ -132,20 +107,15 @@
     window.scrollTo({ top, behavior: 'smooth' });
   }
 
-  /**
-   * Initialize event listeners
-   */
   function init() {
     if (!nav) return;
 
     createBackdrop();
 
-    // Hamburger toggle
     if (hamburger) {
       hamburger.addEventListener('click', toggleMobileMenu);
     }
 
-    // Mobile links
     mobileLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
         const href = link.getAttribute('href') || '';
@@ -158,7 +128,6 @@
       });
     });
 
-    // Desktop links: smooth scroll
     navLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
         const href = link.getAttribute('href') || '';
@@ -170,14 +139,12 @@
       });
     });
 
-    // ESC key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && isMenuOpen) {
         closeMobileMenu();
       }
     });
 
-    // Scroll handler (throttled)
     const onScroll = throttle(() => {
       handleScroll();
       setActiveLink();
@@ -188,10 +155,8 @@
     handleScroll();
   }
 
-  // Expose
   window.Navigation = { init, openMobileMenu, closeMobileMenu, smoothScrollTo };
 
-  // Auto-init
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

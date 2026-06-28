@@ -4,11 +4,8 @@
 (function () {
   'use strict';
 
-  /**
-   * CONFIG — Set your Formspree endpoint or leave empty to use mailto
-   */
   const CONFIG = {
-    formspreeEndpoint: '', // e.g. 'https://formspree.io/f/xxxxxxx'
+    formspreeEndpoint: '',
     email: 'arjscandes73@gmail.com',
     maxMessageLength: 500,
     minMessageLength: 20,
@@ -44,18 +41,12 @@
   };
 
   let form, nameInput, emailInput, subjectInput, messageInput;
-  let charCount, submitBtn, successEl, formEl, resetBtn;
+  let charCount, submitBtn, successEl, resetBtn;
 
-  /**
-   * Get error element for input
-   */
   function getErrorEl(field) {
     return document.getElementById(field + 'Error');
   }
 
-  /**
-   * Set field error state
-   */
   function setError(field, message) {
     const input = document.getElementById('contact' + field.charAt(0).toUpperCase() + field.slice(1));
     const errorEl = getErrorEl(field);
@@ -63,9 +54,6 @@
     if (errorEl) errorEl.textContent = message;
   }
 
-  /**
-   * Clear field error state
-   */
   function clearError(field) {
     const input = document.getElementById('contact' + field.charAt(0).toUpperCase() + field.slice(1));
     const errorEl = getErrorEl(field);
@@ -73,9 +61,6 @@
     if (errorEl) errorEl.textContent = '';
   }
 
-  /**
-   * Validate a field
-   */
   function validateField(field) {
     const rule = RULES[field];
     if (!rule) return true;
@@ -97,9 +82,6 @@
     return true;
   }
 
-  /**
-   * Validate all fields
-   */
   function validateAll() {
     let valid = true;
     Object.keys(RULES).forEach((field) => {
@@ -108,9 +90,6 @@
     return valid;
   }
 
-  /**
-   * Update character count for message
-   */
   function updateCharCount() {
     if (!messageInput || !charCount) return;
     const len = messageInput.value.length;
@@ -124,12 +103,8 @@
     }
   }
 
-  /**
-   * Submit form (Formspree or mailto fallback)
-   */
   async function submitForm() {
     if (!validateAll()) {
-      // Shake the submit button
       if (submitBtn) {
         submitBtn.classList.add('shake');
         setTimeout(() => submitBtn.classList.remove('shake'), 500);
@@ -137,16 +112,15 @@
       return;
     }
 
-    if (!submitBtn || !formEl) return;
+    if (!submitBtn || !form) return;
 
-    const data = {
+    const formData = {
       name: nameInput.value.trim(),
       email: emailInput.value.trim(),
       subject: subjectInput.value.trim(),
       message: messageInput.value.trim(),
     };
 
-    // Show loading state
     submitBtn.classList.add('btn--loading');
     submitBtn.disabled = true;
     [nameInput, emailInput, subjectInput, messageInput].forEach((i) => {
@@ -155,25 +129,22 @@
 
     try {
       if (CONFIG.formspreeEndpoint) {
-        // Send via Formspree
         const response = await fetch(CONFIG.formspreeEndpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
+          body: JSON.stringify(formData),
         });
         if (!response.ok) throw new Error('Form submission failed');
       } else {
-        // Fallback: simulate async then open mailto
         await wait(1500);
-        const mailto = `mailto:${CONFIG.email}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(
-          `Name: ${data.name}\nEmail: ${data.email}\n\n${data.message}`
+        const mailto = `mailto:${CONFIG.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+          `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
         )}`;
         window.location.href = mailto;
       }
 
       showSuccess();
     } catch (err) {
-      // Re-enable form on error
       submitBtn.classList.remove('btn--loading');
       submitBtn.disabled = false;
       [nameInput, emailInput, subjectInput, messageInput].forEach((i) => {
@@ -183,19 +154,13 @@
     }
   }
 
-  /**
-   * Show success state
-   */
   function showSuccess() {
-    if (formEl) formEl.style.display = 'none';
+    if (form) form.style.display = 'none';
     if (successEl) successEl.style.display = 'block';
   }
 
-  /**
-   * Reset form back to initial state
-   */
   function resetForm() {
-    if (formEl) formEl.style.display = '';
+    if (form) form.style.display = '';
     if (successEl) successEl.style.display = 'none';
     if (form) form.reset();
     Object.keys(RULES).forEach(clearError);
@@ -209,20 +174,15 @@
     updateCharCount();
   }
 
-  /**
-   * Setup field listeners for blur validation and input clearing
-   */
   function setupFieldListeners() {
     Object.keys(RULES).forEach((field) => {
       const input = document.getElementById('contact' + field.charAt(0).toUpperCase() + field.slice(1));
       if (!input) return;
 
-      // Validate on blur (after user leaves the field)
       input.addEventListener('blur', () => {
         if (input.value.trim()) validateField(field);
       });
 
-      // Clear error on focus
       input.addEventListener('focus', () => clearError(field));
     });
 
@@ -242,12 +202,8 @@
     }
   }
 
-  /**
-   * Initialize contact module
-   */
   function init() {
     form = document.getElementById('contactForm');
-    formEl = form;
     nameInput = document.getElementById('contactName');
     emailInput = document.getElementById('contactEmail');
     subjectInput = document.getElementById('contactSubject');

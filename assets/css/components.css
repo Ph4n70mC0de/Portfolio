@@ -1,7 +1,5 @@
-/* === components.css === */
-/* Reusable UI components: buttons, cards, badges, loader, cursor, skip link, back-to-top */
 
-/* ─── BUTTONS ─── */
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -113,7 +111,7 @@
   display: none;
 }
 
-/* ─── TAGS / BADGES ─── */
+/* Tags / badges */
 .tag {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -126,7 +124,7 @@
   white-space: nowrap;
 }
 
-/* ─── GLASSMORPHISM CARD ─── */
+/* Glassmorphism card */
 .glass-card {
   background: var(--color-bg-glass);
   backdrop-filter: var(--blur-glass);
@@ -135,7 +133,7 @@
   border-radius: var(--radius-lg);
 }
 
-/* ─── SKIP LINK ─── */
+/* Skip link */
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -156,7 +154,7 @@
   outline-offset: 2px;
 }
 
-/* ─── CUSTOM CURSOR (desktop only) ─── */
+/* Custom cursor (desktop only) */
 .cursor {
   display: none;
 }
@@ -218,7 +216,7 @@
   }
 }
 
-/* ─── LOADER ─── */
+/* Loader */
 .loader {
   position: fixed;
   inset: 0;
@@ -279,7 +277,7 @@
   50%      { opacity: 1; }
 }
 
-/* ─── BACK-TO-TOP ─── */
+/* Back-to-top */
 .btn-top {
   position: fixed;
   bottom: var(--sp-8);
@@ -324,7 +322,7 @@
   transform: translateY(-2px);
 }
 
-/* ─── STATUS DOT (shared) ─── */
+/* Status dot */
 .status-dot {
   width: 8px;
   height: 8px;
@@ -339,7 +337,7 @@
   animation: pulse 2s ease-in-out infinite;
 }
 
-/* ─── SECTION DIVIDERS (decorative) ─── */
+/* Section dividers */
 .section-divider {
   position: relative;
   height: 1px;

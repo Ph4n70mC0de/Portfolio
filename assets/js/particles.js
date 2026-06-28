@@ -1,16 +1,9 @@
-// === particles.js ===
 // Canvas particle system with connection lines and mouse interaction
 
 (function () {
   'use strict';
 
   class Particle {
-    /**
-     * Create a particle
-     * @param {number} x - Initial x
-     * @param {number} y - Initial y
-     * @param {HTMLCanvasElement} canvas - Canvas for bounds
-     */
     constructor(x, y, canvas) {
       this.canvas = canvas;
       this.x = x;
@@ -22,26 +15,21 @@
       this.opacity = Math.random() * 0.5 + 0.3;
       this.colorIndex = Math.floor(Math.random() * 3);
       this.colors = [
-        'rgba(108, 99, 255, ',   // accent primary
-        'rgba(0, 212, 255, ',    // accent secondary
-        'rgba(0, 255, 136, ',    // accent green
+        'rgba(108, 99, 255, ',
+        'rgba(0, 212, 255, ',
+        'rgba(0, 255, 136, ',
       ];
     }
 
-    /**
-     * Update particle position
-     */
     update(mouse) {
       this.x += this.speedX;
       this.y += this.speedY;
 
-      // Wrap around edges
       if (this.x > this.canvas.width) this.x = 0;
       else if (this.x < 0) this.x = this.canvas.width;
       if (this.y > this.canvas.height) this.y = 0;
       else if (this.y < 0) this.y = this.canvas.height;
 
-      // Mouse repulsion
       if (mouse.x !== null && mouse.y !== null) {
         const dx = this.x - mouse.x;
         const dy = this.y - mouse.y;
@@ -54,10 +42,6 @@
       }
     }
 
-    /**
-     * Draw particle on canvas
-     * @param {CanvasRenderingContext2D} ctx
-     */
     draw(ctx) {
       ctx.fillStyle = this.colors[this.colorIndex] + this.opacity + ')';
       ctx.beginPath();
@@ -67,10 +51,6 @@
   }
 
   class ParticleSystem {
-    /**
-     * Create a particle system
-     * @param {HTMLCanvasElement} canvas
-     */
     constructor(canvas) {
       this.canvas = canvas;
       this.ctx = canvas.getContext('2d');
@@ -93,9 +73,6 @@
       };
     }
 
-    /**
-     * Resize canvas to match window
-     */
     resize() {
       const dpr = window.devicePixelRatio || 1;
       this.canvas.width = window.innerWidth * dpr;
@@ -107,9 +84,6 @@
       this.canvas.height = window.innerHeight;
     }
 
-    /**
-     * Create initial particles
-     */
     init() {
       this.particles = [];
       for (let i = 0; i < this.particleCount; i++) {
@@ -119,9 +93,6 @@
       }
     }
 
-    /**
-     * Connect nearby particles with lines
-     */
     connect() {
       for (let i = 0; i < this.particles.length; i++) {
         for (let j = i + 1; j < this.particles.length; j++) {
@@ -141,9 +112,6 @@
       }
     }
 
-    /**
-     * Animation loop
-     */
     animate() {
       if (!this.running) return;
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -155,13 +123,10 @@
       this.rafId = requestAnimationFrame(() => this.animate());
     }
 
-    /**
-     * Start the system
-     */
     start() {
       if (this.running) return;
       if (window.prefersReducedMotion && window.prefersReducedMotion()) {
-        return; // skip if reduced motion
+        return;
       }
       this.running = true;
       this.resize();
@@ -172,9 +137,6 @@
       this.canvas.addEventListener('mouseleave', this.handleMouseLeave);
     }
 
-    /**
-     * Stop the system
-     */
     stop() {
       this.running = false;
       if (this.rafId) cancelAnimationFrame(this.rafId);
@@ -187,7 +149,6 @@
   window.ParticleSystem = ParticleSystem;
   window.Particle = Particle;
 
-  // Auto-init on canvas presence
   function autoInit() {
     const canvas = document.getElementById('heroCanvas');
     if (canvas) {

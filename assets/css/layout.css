@@ -1,7 +1,5 @@
-/* === layout.css === */
-/* Grid, flex containers, section wrappers, navigation layout */
 
-/* ─── SECTION WRAPPERS ─── */
+/* Section wrappers */
 .section {
   padding: var(--section-padding) 0;
   position: relative;
@@ -44,7 +42,7 @@
   font-size: var(--text-md);
 }
 
-/* ─── NAVIGATION LAYOUT ─── */
+/* Navigation layout */
 .nav {
   position: fixed;
   top: 0;
@@ -249,7 +247,7 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ─── MOBILE MENU ─── */
+/* Mobile menu */
 .nav__mobile {
   position: fixed;
   top: 0;

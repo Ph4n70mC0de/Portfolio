@@ -4,9 +4,6 @@
 (function () {
   'use strict';
 
-  /**
-   * Project data array
-   */
   const PROJECTS = [
     {
       title: 'E-Commerce Platform',
@@ -82,9 +79,6 @@
     },
   ];
 
-  /**
-   * Filter projects by category
-   */
   function filterProjects(category) {
     const cards = document.querySelectorAll('.project-card');
     cards.forEach((card) => {
@@ -98,9 +92,6 @@
     });
   }
 
-  /**
-   * Initialize filter buttons
-   */
   function initFilters() {
     const buttons = document.querySelectorAll('.filter-btn');
     buttons.forEach((btn) => {
@@ -113,9 +104,6 @@
     });
   }
 
-  /**
-   * Populate modal with project data
-   */
   function openModal(index) {
     const project = PROJECTS[index];
     if (!project) return;
@@ -149,9 +137,6 @@
     }
   }
 
-  /**
-   * Close the project modal
-   */
   function closeModal() {
     const modal = document.getElementById('projectModal');
     if (!modal) return;
@@ -163,9 +148,6 @@
     }
   }
 
-  /**
-   * Initialize view button click handlers
-   */
   function initViewButtons() {
     const buttons = document.querySelectorAll('.project-card__view-btn');
     buttons.forEach((btn) => {
@@ -178,9 +160,6 @@
     });
   }
 
-  /**
-   * Initialize modal close handlers
-   */
   function initModalClose() {
     const closeBtn = document.getElementById('modalClose');
     const backdrop = document.getElementById('modalBackdrop');
@@ -193,9 +172,6 @@
     });
   }
 
-  /**
-   * Initialize all project functionality
-   */
   function init() {
     initFilters();
     initViewButtons();

@@ -1,5 +1,3 @@
-/* === sections/experience.css === */
-
 .section--experience {
   background: var(--color-bg-secondary);
   position: relative;
@@ -50,7 +48,6 @@
   box-shadow: 0 4px 14px rgba(108, 99, 255, 0.3), 0 0 0 3px rgba(108, 99, 255, 0.5);
 }
 
-/* ─── TIMELINE ─── */
 .timeline {
   position: relative;
   padding-left: var(--sp-10);

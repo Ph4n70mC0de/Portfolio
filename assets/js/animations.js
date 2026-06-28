@@ -7,9 +7,6 @@
   let revealObserver = null;
   let countObserver = null;
 
-  /**
-   * Initialize scroll reveal animations
-   */
   function initRevealAnimations() {
     const elements = document.querySelectorAll('[data-animate]');
     if (!elements.length) return;
@@ -34,9 +31,6 @@
     elements.forEach((el) => revealObserver.observe(el));
   }
 
-  /**
-   * Initialize stagger animations
-   */
   function initStaggerAnimations() {
     const elements = document.querySelectorAll('[data-stagger]');
     if (!elements.length) return;
@@ -61,10 +55,6 @@
     elements.forEach((el) => observer.observe(el));
   }
 
-  /**
-   * Animate a number from 0 to target
-   * @param {HTMLElement} el
-   */
   function countUp(el) {
     const target = parseInt(el.getAttribute('data-count'), 10) || 0;
     if (target === 0) return;
@@ -87,9 +77,6 @@
     requestAnimationFrame(step);
   }
 
-  /**
-   * Initialize count-up animations on stat cards
-   */
   function initCountUp() {
     const stats = document.querySelectorAll('.stat-card__number[data-count]');
     if (!stats.length) return;
@@ -116,9 +103,6 @@
     stats.forEach((s) => countObserver.observe(s));
   }
 
-  /**
-   * Initialize back-to-top button
-   */
   function initBackToTop() {
     const btn = document.getElementById('btnTop');
     if (!btn) return;
@@ -138,9 +122,6 @@
     });
   }
 
-  /**
-   * Initialize custom cursor (desktop only)
-   */
   function initCustomCursor() {
     if (!window.matchMedia('(pointer: fine)').matches) return;
     if (prefersReducedMotion()) return;
@@ -204,9 +185,6 @@
     });
   }
 
-  /**
-   * Hide the loader after a brief moment
-   */
   function initLoader() {
     const loader = document.getElementById('loader');
     if (!loader) return;
@@ -235,9 +213,6 @@
     }
   }
 
-  /**
-   * Hero section load animations
-   */
   function initHeroAnimations() {
     const heroContent = document.querySelector('.hero__content');
     if (!heroContent) return;
@@ -264,9 +239,6 @@
     }, 100);
   }
 
-  /**
-   * Initialize all animations
-   */
   function init() {
     initLoader();
     initHeroAnimations();

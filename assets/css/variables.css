@@ -1,7 +1,5 @@
-/* === variables.css === */
-/* Design tokens — colors, typography, spacing, effects */
 
-/* ─── BRAND COLORS ─── */
+/* Brand colors */
 :root {
   --color-bg-primary:        #0a0a0f;
   --color-bg-secondary:      #111118;
@@ -23,7 +21,7 @@
   --color-shadow-card:       0 8px 40px rgba(0, 0, 0, 0.6);
   --color-shadow-glow:       0 0 40px rgba(108, 99, 255, 0.25);
 
-  /* ─── TYPOGRAPHY ─── */
+  /* Typography */
   --font-display:    'Syne', sans-serif;
   --font-body:       'DM Sans', sans-serif;
   --font-mono:       'JetBrains Mono', monospace;
@@ -50,7 +48,7 @@
   --lh-normal:  1.6;
   --lh-loose:   1.8;
 
-  /* ─── SPACING SCALE ─── */
+  /* Spacing scale */
   --sp-1:  0.25rem;
   --sp-2:  0.5rem;
   --sp-3:  0.75rem;
@@ -65,13 +63,13 @@
   --sp-24: 6rem;
   --sp-32: 8rem;
 
-  /* ─── LAYOUT ─── */
+  /* Layout */
   --container-max:   1200px;
   --container-wide:  1440px;
   --section-padding: clamp(5rem, 10vw, 8rem);
   --nav-height:      72px;
 
-  /* ─── EFFECTS ─── */
+  /* Effects */
   --radius-sm:   6px;
   --radius-md:   12px;
   --radius-lg:   20px;
@@ -81,7 +79,7 @@
   --blur-glass:  blur(20px);
   --blur-md:     blur(8px);
 
-  /* ─── TRANSITIONS ─── */
+  /* Transitions */
   --ease-out:        cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out:     cubic-bezier(0.65, 0, 0.35, 1);
   --ease-bounce:     cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -92,7 +90,7 @@
   --duration-slow:   600ms;
   --duration-slower: 1000ms;
 
-  /* ─── Z-INDEX STACK ─── */
+  /* Z-index */
   --z-base:     1;
   --z-above:    10;
   --z-sticky:   100;
@@ -100,14 +98,14 @@
   --z-modal:    1000;
   --z-toast:    2000;
 
-  /* ─── BREAKPOINTS (for JS reference) ─── */
+  /* Breakpoints (for JS reference) */
   --bp-sm:  480px;
   --bp-md:  768px;
   --bp-lg:  1024px;
   --bp-xl:  1200px;
 }
 
-/* ─── LIGHT MODE OVERRIDES ─── */
+/* Light mode */
 [data-theme="light"] {
   --color-bg-primary:      #f8f8fc;
   --color-bg-secondary:    #ffffff;

@@ -5,11 +5,7 @@
   'use strict';
 
   let barObserver = null;
-  const animatedPanels = new Set();
 
-  /**
-   * Switch active tab and panel
-   */
   function switchTab(target) {
     const tabs = document.querySelectorAll('.skills__tab');
     const panels = document.querySelectorAll('.skills__panel');
@@ -35,17 +31,11 @@
       activePanel.classList.add('skills__panel--active');
       activePanel.setAttribute('aria-hidden', 'false');
       activePanel.setAttribute('tabindex', '0');
-      // Move focus to the active panel for screen reader experience
       activePanel.focus({ preventScroll: true });
-      // Re-trigger bar animations for the new panel
       animateBarsInPanel(activePanel);
     }
   }
 
-  /**
-   * Animate skill bars within a panel
-   * Only animates if bars haven't already reached their target width
-   */
   function animateBarsInPanel(panel) {
     if (!panel) return;
     const bars = panel.querySelectorAll('.skill-bar');
@@ -55,20 +45,15 @@
       const width = fill.getAttribute('data-width') || '0';
       const delay = idx * 0.1;
       bar.classList.remove('skill-bar--visible');
-      // Disable transition, reset to 0%, force reflow, re-enable transition
       fill.style.transition = 'none';
       fill.style.width = '0%';
-      fill.offsetWidth; // force reflow
-      // Re-enable transition with staggered delay and animate to target
+      fill.offsetWidth;
       fill.style.transition = `width 1.2s var(--ease-out) ${delay}s`;
       fill.style.width = width + '%';
       bar.classList.add('skill-bar--visible');
     });
   }
 
-  /**
-   * Setup tab click handlers
-   */
   function initTabs() {
     const tabs = document.querySelectorAll('.skills__tab');
     tabs.forEach((tab) => {
@@ -77,7 +62,6 @@
         if (target) switchTab(target);
       });
 
-      // Keyboard navigation
       tab.addEventListener('keydown', (e) => {
         const tabsArray = Array.from(tabs);
         const currentIndex = tabsArray.indexOf(tab);
@@ -112,12 +96,8 @@
     });
   }
 
-  /**
-   * Observe and animate skill bars on first view (initial active panel)
-   */
   function initBarObserver() {
     if (!('IntersectionObserver' in window)) {
-      // Fallback: just animate all visible bars
       const activePanel = document.querySelector('.skills__panel--active');
       if (activePanel) animateBarsInPanel(activePanel);
       return;
@@ -149,9 +129,6 @@
     }
   }
 
-  /**
-   * Initialize skills module
-   */
   function init() {
     initTabs();
     initBarObserver();
