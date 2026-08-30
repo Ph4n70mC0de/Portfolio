@@ -44,6 +44,11 @@
     document.body.style.overflow = '';
 
     if (window.releaseFocus) window.releaseFocus(mobileMenu);
+
+    // Restore focus to the hamburger if focus was inside the menu
+    if (hamburger.contains(document.activeElement) || mobileMenu.contains(document.activeElement)) {
+      hamburger.focus();
+    }
   }
 
   function toggleMobileMenu() {
