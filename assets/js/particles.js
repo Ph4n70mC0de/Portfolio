@@ -25,10 +25,10 @@
       this.x += this.speedX;
       this.y += this.speedY;
 
-      if (this.x > this.canvas.width) this.x = 0;
-      else if (this.x < 0) this.x = this.canvas.width;
-      if (this.y > this.canvas.height) this.y = 0;
-      else if (this.y < 0) this.y = this.canvas.height;
+      if (this.x > window.innerWidth) this.x = 0;
+      else if (this.x < 0) this.x = window.innerWidth;
+      if (this.y > window.innerHeight) this.y = 0;
+      else if (this.y < 0) this.y = window.innerHeight;
 
       if (mouse.x !== null && mouse.y !== null) {
         const dx = this.x - mouse.x;
@@ -63,7 +63,7 @@
 
       this.handleResize = debounce(() => this.resize(), 200);
       this.handleMouseMove = (e) => {
-        const rect = this.canvas.getBoundingClientRect();
+        const rect = (this._hero || this.canvas).getBoundingClientRect();
         this.mouse.x = e.clientX - rect.left;
         this.mouse.y = e.clientY - rect.top;
       };
@@ -75,20 +75,23 @@
 
     resize() {
       const dpr = window.devicePixelRatio || 1;
-      this.canvas.width = window.innerWidth * dpr;
-      this.canvas.height = window.innerHeight * dpr;
-      this.canvas.style.width = window.innerWidth + 'px';
-      this.canvas.style.height = window.innerHeight + 'px';
-      this.ctx.scale(dpr, dpr);
-      this.canvas.width = window.innerWidth;
-      this.canvas.height = window.innerHeight;
+      const cssWidth = window.innerWidth;
+      const cssHeight = window.innerHeight;
+      // Setting width/height resets the canvas (including transforms),
+      // so always set dimensions first, then scale the context once.
+      this.canvas.width = Math.floor(cssWidth * dpr);
+      this.canvas.height = Math.floor(cssHeight * dpr);
+      this.canvas.style.width = cssWidth + 'px';
+      this.canvas.style.height = cssHeight + 'px';
+      this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      this.particleCount = Math.min(Math.floor((cssWidth * cssHeight) / 12000), 80);
     }
 
     init() {
       this.particles = [];
       for (let i = 0; i < this.particleCount; i++) {
-        const x = Math.random() * this.canvas.width;
-        const y = Math.random() * this.canvas.height;
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight;
         this.particles.push(new Particle(x, y, this.canvas));
       }
     }
@@ -114,7 +117,7 @@
 
     animate() {
       if (!this.running) return;
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
       this.particles.forEach((p) => {
         p.update(this.mouse);
         p.draw(this.ctx);
@@ -133,16 +136,45 @@
       this.init();
       this.animate();
       window.addEventListener('resize', this.handleResize);
-      this.canvas.addEventListener('mousemove', this.handleMouseMove);
-      this.canvas.addEventListener('mouseleave', this.handleMouseLeave);
+
+      // Mouse interaction must be tracked on the hero section, not the canvas
+      // (the canvas sits behind content and has pointer-events: none).
+      const hero = this.canvas.closest('section') || this.canvas;
+      this._hero = hero;
+      hero.addEventListener('mousemove', this.handleMouseMove);
+      hero.addEventListener('mouseleave', this.handleMouseLeave);
+
+      // Pause the simulation when the hero is not visible
+      if ('IntersectionObserver' in window) {
+        this._observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                if (!this.running) {
+                  this.running = true;
+                  this.animate();
+                }
+              } else {
+                this.running = false;
+                if (this.rafId) cancelAnimationFrame(this.rafId);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        this._observer.observe(hero);
+      }
     }
 
     stop() {
       this.running = false;
       if (this.rafId) cancelAnimationFrame(this.rafId);
       window.removeEventListener('resize', this.handleResize);
-      this.canvas.removeEventListener('mousemove', this.handleMouseMove);
-      this.canvas.removeEventListener('mouseleave', this.handleMouseLeave);
+      if (this._hero) {
+        this._hero.removeEventListener('mousemove', this.handleMouseMove);
+        this._hero.removeEventListener('mouseleave', this.handleMouseLeave);
+      }
+      if (this._observer) this._observer.disconnect();
     }
   }
 

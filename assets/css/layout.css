@@ -255,6 +255,7 @@
   width: 100vw;
   max-width: 360px;
   height: 100vh;
+  height: 100dvh;
   background: var(--color-bg-secondary);
   border-left: 1px solid var(--color-border-subtle);
   padding: calc(var(--nav-height) + var(--sp-8)) var(--sp-8) var(--sp-8);

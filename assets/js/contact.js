@@ -5,10 +5,10 @@
   'use strict';
 
   const CONFIG = {
-    formspreeEndpoint: '',
+    formspreeEndpoint: 'https://formspree.io/f/mqpkaoba',
     email: 'arjscandes73@gmail.com',
     maxMessageLength: 500,
-    minMessageLength: 20,
+    minMessageLength: 10,
     minNameLength: 2,
     minSubjectLength: 3,
   };
@@ -50,14 +50,20 @@
   function setError(field, message) {
     const input = document.getElementById('contact' + field.charAt(0).toUpperCase() + field.slice(1));
     const errorEl = getErrorEl(field);
-    if (input) input.classList.add('form-input--error', 'form-textarea--error');
+    if (input) {
+      input.classList.add('form-input--error', 'form-textarea--error');
+      input.setAttribute('aria-invalid', 'true');
+    }
     if (errorEl) errorEl.textContent = message;
   }
 
   function clearError(field) {
     const input = document.getElementById('contact' + field.charAt(0).toUpperCase() + field.slice(1));
     const errorEl = getErrorEl(field);
-    if (input) input.classList.remove('form-input--error', 'form-textarea--error');
+    if (input) {
+      input.classList.remove('form-input--error', 'form-textarea--error');
+      input.setAttribute('aria-invalid', 'false');
+    }
     if (errorEl) errorEl.textContent = '';
   }
 
@@ -84,9 +90,20 @@
 
   function validateAll() {
     let valid = true;
+    let firstInvalid = null;
     Object.keys(RULES).forEach((field) => {
-      if (!validateField(field)) valid = false;
+      if (!validateField(field)) {
+        valid = false;
+        if (!firstInvalid) {
+          firstInvalid = document.getElementById(
+            'contact' + field.charAt(0).toUpperCase() + field.slice(1)
+          );
+        }
+      }
     });
+    // Move focus to the first invalid field so keyboard and screen reader
+    // users land directly on the problem.
+    if (firstInvalid) firstInvalid.focus();
     return valid;
   }
 
@@ -103,22 +120,32 @@
     }
   }
 
+  let isSubmitting = false;
+
   async function submitForm() {
+    if (isSubmitting) return;
+    isSubmitting = true;
+
     if (!validateAll()) {
       if (submitBtn) {
         submitBtn.classList.add('shake');
         setTimeout(() => submitBtn.classList.remove('shake'), 500);
       }
+      isSubmitting = false;
       return;
     }
 
-    if (!submitBtn || !form) return;
+    if (!submitBtn || !form) {
+      isSubmitting = false;
+      return;
+    }
 
     const formData = {
       name: nameInput.value.trim(),
       email: emailInput.value.trim(),
       subject: subjectInput.value.trim(),
       message: messageInput.value.trim(),
+      _subject: `Portfolio Contact: ${subjectInput.value.trim()}`,
     };
 
     submitBtn.classList.add('btn--loading');
@@ -129,12 +156,21 @@
 
     try {
       if (CONFIG.formspreeEndpoint) {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000);
+
         const response = await fetch(CONFIG.formspreeEndpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData),
+          signal: controller.signal,
         });
-        if (!response.ok) throw new Error('Form submission failed');
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.message || 'Form submission failed');
+        }
       } else {
         await wait(1500);
         const mailto = `mailto:${CONFIG.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
@@ -150,13 +186,23 @@
       [nameInput, emailInput, subjectInput, messageInput].forEach((i) => {
         if (i) i.disabled = false;
       });
-      alert('Sorry, something went wrong. Please email me directly at ' + CONFIG.email);
+      showMessageError('Sorry, something went wrong. Please email me directly at ' + CONFIG.email);
+    } finally {
+      isSubmitting = false;
     }
+  }
+
+  function showMessageError(text) {
+    const errorEl = getErrorEl('message');
+    if (errorEl) errorEl.textContent = text;
   }
 
   function showSuccess() {
     if (form) form.style.display = 'none';
     if (successEl) successEl.style.display = 'block';
+    // Move focus to the success heading so it is announced by screen readers
+    const heading = document.getElementById('contactSuccessTitle');
+    if (heading) heading.focus();
   }
 
   function resetForm() {
@@ -190,8 +236,8 @@
       messageInput.addEventListener('input', updateCharCount);
     }
 
-    if (submitBtn) {
-      submitBtn.addEventListener('click', (e) => {
+    if (form) {
+      form.addEventListener('submit', (e) => {
         e.preventDefault();
         submitForm();
       });

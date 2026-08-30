@@ -8,7 +8,8 @@
       content="Full-stack developer portfolio — Crafting elegant digital experiences with modern web technologies."
     />
     <meta name="author" content="Jonny Candes" />
-    <meta name="theme-color" content="#6c63ff" />
+    <meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f8f8fc" media="(prefers-color-scheme: light)" />
 
 <!-- Open Graph -->
     <meta property="og:title" content="Jonny Candes | Full-Stack Developer" />
@@ -23,6 +24,13 @@
       property="og:url"
       content="https://jonny-candes-portfolio.vercel.app"
     />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Jonny Candes — Full-Stack Developer portfolio"
+    />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -34,6 +42,7 @@
     />
 
     <link rel="icon" href="assets/images/icons/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/images/icons/favicon.png" />
     <link rel="canonical" href="https://jonny-candes-portfolio.vercel.app" />
     <script
       src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"
@@ -42,8 +51,39 @@
 
     <title>Jonny Candes | Full-Stack Developer</title>
 
+    <!-- Anti-FOUC theme script: must run before first paint -->
+    <script>
+      (function () {
+        var theme = 'dark';
+        try {
+          var stored = localStorage.getItem('portfolio-theme');
+          if (stored === 'dark' || stored === 'light') theme = stored;
+          else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) theme = 'light';
+        } catch (e) {}
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+
+    <!-- Preconnect + Google Fonts (non-blocking, with swap) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://code.iconify.design" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      onload="this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      />
+    </noscript>
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/css/reset.css" />
+
     <link rel="stylesheet" href="assets/css/variables.css" />
     <link rel="stylesheet" href="assets/css/base.css" />
     <link rel="stylesheet" href="assets/css/layout.css" />
@@ -58,7 +98,7 @@
     <link rel="stylesheet" href="assets/css/sections/footer.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
   </head>
-  <body data-theme="dark">
+  <body>
     <!-- Skip Link (Accessibility) -->
     <a href="#main" class="skip-link">Skip to main content</a>
 
@@ -904,14 +944,34 @@
           </div>
 
           <div class="projects__filters" data-animate="fade-up">
-            <button class="filter-btn filter-btn--active" data-filter="all">
+            <button
+              class="filter-btn filter-btn--active"
+              data-filter="all"
+              aria-pressed="true"
+            >
               All
             </button>
-            <button class="filter-btn" data-filter="frontend">Frontend</button>
-            <button class="filter-btn" data-filter="fullstack">
+            <button
+              class="filter-btn"
+              data-filter="frontend"
+              aria-pressed="false"
+            >
+              Frontend
+            </button>
+            <button
+              class="filter-btn"
+              data-filter="fullstack"
+              aria-pressed="false"
+            >
               Full-Stack
             </button>
-            <button class="filter-btn" data-filter="backend">Backend</button>
+            <button
+              class="filter-btn"
+              data-filter="backend"
+              aria-pressed="false"
+            >
+              Backend
+            </button>
           </div>
 
           <div class="projects__grid" id="projectsGrid">
@@ -1596,8 +1656,9 @@
                         placeholder="John Doe"
                         autocomplete="name"
                         required
+                        aria-describedby="nameError"
                       />
-                      <span class="form-error" id="nameError"></span>
+                      <span class="form-error" id="nameError" role="alert" aria-live="polite"></span>
                     </div>
                     <div class="form-group">
                       <label class="form-label" for="contactEmail"
@@ -1611,8 +1672,9 @@
                         placeholder="john@gmail.com"
                         autocomplete="email"
                         required
+                        aria-describedby="emailError"
                       />
-                      <span class="form-error" id="emailError"></span>
+                      <span class="form-error" id="emailError" role="alert" aria-live="polite"></span>
                     </div>
                   </div>
 
@@ -1627,8 +1689,9 @@
                       class="form-input"
                       placeholder="Project Inquiry"
                       required
+                      aria-describedby="subjectError"
                     />
-                    <span class="form-error" id="subjectError"></span>
+                    <span class="form-error" id="subjectError" role="alert" aria-live="polite"></span>
                   </div>
 
                   <div class="form-group">
@@ -1641,9 +1704,11 @@
                       class="form-textarea"
                       rows="5"
                       placeholder="Tell me about your project..."
+                      maxlength="500"
                       required
+                      aria-describedby="messageError"
                     ></textarea>
-                    <span class="form-error" id="messageError"></span>
+                    <span class="form-error" id="messageError" role="alert" aria-live="polite"></span>
                     <span class="form-char-count"
                       ><span id="charCount">0</span>/500</span
                     >
@@ -1670,6 +1735,8 @@
                 <div
                   class="contact__success"
                   id="contactSuccess"
+                  role="status"
+                  aria-live="polite"
                   style="display: none"
                 >
                   <div class="contact__success-icon">
@@ -1678,7 +1745,7 @@
                       aria-hidden="true"
                     ></iconify-icon>
                   </div>
-                  <h3>Message Sent!</h3>
+                  <h3 id="contactSuccessTitle" tabindex="-1">Message Sent!</h3>
                   <p>
                     Thanks for reaching out. I'll get back to you within 24
                     hours.

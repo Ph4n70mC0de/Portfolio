@@ -16,7 +16,7 @@
   }
 
   function applyTheme(theme) {
-    document.body.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
     const toggle = document.getElementById('themeToggle');
     if (toggle) {
       toggle.setAttribute('aria-label',
@@ -26,7 +26,7 @@
   }
 
   function toggleTheme() {
-    const current = document.body.getAttribute('data-theme') || 'dark';
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
     const next = current === 'dark' ? 'light' : 'dark';
 
     document.body.classList.add('theme-transitioning');
