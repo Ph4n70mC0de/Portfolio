@@ -6,7 +6,7 @@
 
   let barObserver = null;
 
-  function switchTab(target) {
+  function switchTab(target, focusPanel = false) {
     const tabs = document.querySelectorAll('.skills__tab');
     const panels = document.querySelectorAll('.skills__panel');
 
@@ -31,7 +31,9 @@
       activePanel.classList.add('skills__panel--active');
       activePanel.setAttribute('aria-hidden', 'false');
       activePanel.setAttribute('tabindex', '0');
-      activePanel.focus({ preventScroll: true });
+      // Per APG: focus stays on the tab during arrow-key navigation;
+      // only move focus into the panel on direct click activation.
+      if (focusPanel) activePanel.focus({ preventScroll: true });
       animateBarsInPanel(activePanel);
     }
   }
@@ -59,7 +61,7 @@
     tabs.forEach((tab) => {
       tab.addEventListener('click', () => {
         const target = tab.getAttribute('data-tab');
-        if (target) switchTab(target);
+        if (target) switchTab(target, true);
       });
 
       tab.addEventListener('keydown', (e) => {
