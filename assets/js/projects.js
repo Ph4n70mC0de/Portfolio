@@ -4,6 +4,8 @@
 (function () {
   'use strict';
 
+  let lastFocused = null;
+
   const PROJECTS = [
     {
       title: 'E-Commerce Platform',
@@ -96,8 +98,12 @@
     const buttons = document.querySelectorAll('.filter-btn');
     buttons.forEach((btn) => {
       btn.addEventListener('click', () => {
-        buttons.forEach((b) => b.classList.remove('filter-btn--active'));
+        buttons.forEach((b) => {
+          b.classList.remove('filter-btn--active');
+          b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('filter-btn--active');
+        btn.setAttribute('aria-pressed', 'true');
         const filter = btn.getAttribute('data-filter') || 'all';
         filterProjects(filter);
       });
@@ -132,6 +138,9 @@
     modal.classList.add('modal--open');
     document.body.classList.add('modal-open');
 
+    // Remember the trigger so focus can be restored on close
+    lastFocused = document.activeElement;
+
     if (window.trapFocus) {
       window.trapFocus(modal.querySelector('.modal__panel'));
     }
@@ -139,12 +148,18 @@
 
   function closeModal() {
     const modal = document.getElementById('projectModal');
-    if (!modal) return;
+    if (!modal || !modal.classList.contains('modal--open')) return;
     modal.classList.remove('modal--open');
     document.body.classList.remove('modal-open');
 
     if (window.releaseFocus) {
       window.releaseFocus(modal.querySelector('.modal__panel'));
+    }
+
+    // Return focus to the element that opened the modal
+    if (lastFocused && typeof lastFocused.focus === 'function') {
+      lastFocused.focus();
+      lastFocused = null;
     }
   }
 
